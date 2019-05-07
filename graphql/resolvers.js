@@ -1,12 +1,12 @@
-const deock = {
-  name: "seo",
-  age: 27,
-  gender: "male"
-};
+import { people, getById } from "../db/db";
 
 const resolvers = {
   Query: {
-    people: () => deock
+    people: () => people,
+    person: (_, args) => {
+      const { id } = args;
+      return getById(id);
+    }
   }
 };
 
