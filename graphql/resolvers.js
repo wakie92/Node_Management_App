@@ -1,6 +1,12 @@
+const deock = {
+  name: "seo",
+  age: 27,
+  gender: "male"
+};
+
 const resolvers = {
   Query: {
-    name: () => "seo"
+    people: () => deock
   }
 };
 
