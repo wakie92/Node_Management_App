@@ -8,6 +8,10 @@ import {
   GraphQLSchema
 } from "graphql";
 
+import { sequelize } from "./models";
+
+sequelize.sync().then(() => console.log("sequelize sync"));
+
 // const schema = buildSchema(`
 //   type Query {
 //     hello: String
