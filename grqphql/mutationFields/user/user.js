@@ -14,7 +14,7 @@ const mutationUserFields = {
       password: { type: GraphQLString },
       user_type: { type: GraphQLString },
       address: { type: GraphQLString },
-      salay: { type: GraphQLInt },
+      salary: { type: GraphQLInt },
       profile_image: { type: GraphQLString },
       birth: { type: GraphQLString },
       join_date: { type: GraphQLString },
@@ -30,7 +30,7 @@ const mutationUserFields = {
     resolve: async (_, user) => await createUser(user)
   },
   loginUser: {
-    type: userType,
+    type: userType, // 쿼리별 타입 지
     args: {
       email: { type: GraphQLString },
       password: { type: GraphQLString }
