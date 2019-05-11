@@ -24,9 +24,9 @@ module.exports = (sequelize, DataTypes) => {
     },
     {
       timestamps: true,
-      underscored: true
-      // charset: "utf8",
-      // collate: "utf8_general_ci"
+      underscored: true,
+      charset: "utf8",
+      collate: "utf8_general_ci"
     }
   );
 };
