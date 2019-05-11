@@ -4,7 +4,7 @@ import userType from "../../types/user";
 
 import { getUserList, getUser } from "../../resolvers/user";
 
-const userFields = {
+const userQueryFields = {
   users: {
     type: new GraphQLList(userType),
     resolve: async () => await getUserList()
@@ -19,4 +19,4 @@ const userFields = {
   }
 };
 
-export default userFields;
+export default userQueryFields;

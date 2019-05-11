@@ -2,11 +2,11 @@ import express from "express";
 import graphqlHttp from "express-graphql";
 import { GraphQLSchema } from "graphql";
 
-import queryType from "./grqphql/types";
+import { queryType, mutationType } from "./grqphql/types";
 
 // sequelize.sync().then(() => console.log("sequelize sync"));
 
-const schema = new GraphQLSchema({ query: queryType });
+const schema = new GraphQLSchema({ query: queryType, mutation: mutationType });
 
 const app = express();
 
