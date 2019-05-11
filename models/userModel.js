@@ -6,10 +6,6 @@ module.exports = (sequelize, DataTypes) => {
   return sequelize.define(
     "user",
     {
-      id: {
-        type: DataTypes.INTEGER,
-        primaryKey: true
-      },
       name: {
         type: DataTypes.STRING,
         allowNull: false
@@ -31,7 +27,7 @@ module.exports = (sequelize, DataTypes) => {
       user_type: {
         type: DataTypes.STRING,
         allowNull: false,
-        defaultValues: "U"
+        defaultValue: "U"
       },
       address: {
         type: DataTypes.STRING
@@ -48,7 +44,7 @@ module.exports = (sequelize, DataTypes) => {
       join_date: {
         type: DataTypes.DATE,
         allowNull: false,
-        defaultValues: DataTypes.NOW
+        defaultValue: DataTypes.NOW
       },
       leave_date: {
         type: DataTypes.DATE
@@ -56,27 +52,27 @@ module.exports = (sequelize, DataTypes) => {
       working_year: {
         type: DataTypes.INTEGER,
         allowNull: false,
-        defaultValues: 0
+        defaultValue: 0
       },
       grade: {
         type: DataTypes.STRING,
         allowNull: false,
-        defaultValues: "사원"
+        defaultValue: "사원"
       },
       half_vacation: {
         type: DataTypes.INTEGER,
         allowNull: false,
-        defaultValues: 0
+        defaultValue: 0
       },
       year_vacation: {
         type: DataTypes.INTEGER,
         allowNull: false,
-        defaultValues: 0
+        defaultValue: 0
       },
       total_year_vacation: {
         type: DataTypes.INTEGER,
         allowNull: false,
-        defaultValues: 15
+        defaultValue: 15
       }
     },
     {

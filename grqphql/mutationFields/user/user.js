@@ -1,8 +1,8 @@
 import { GraphQLString, GraphQLInt } from "graphql";
 
-import { User } from "../../../models";
-
 import userType from "../../types/user";
+
+import { createUser, loginUser } from "../../resolvers/user";
 
 const mutationUserFields = {
   createUser: {
@@ -27,7 +27,15 @@ const mutationUserFields = {
       created_at: { type: GraphQLString },
       updated_at: { type: GraphQLString }
     },
-    resolve: async (_, user) => await User.create(user)
+    resolve: async (_, user) => await createUser(user)
+  },
+  loginUser: {
+    type: userType,
+    args: {
+      email: { type: GraphQLString },
+      password: { type: GraphQLString }
+    },
+    resolve: async (_, { email, password }) => await loginUser(email, password)
   }
 };
 

@@ -4,10 +4,6 @@ module.exports = (sequelize, DataTypes) => {
   return sequelize.define(
     "board",
     {
-      id: {
-        type: DataTypes.INTEGER,
-        primaryKey: true
-      },
       title: {
         type: DataTypes.STRING,
         allowNull: false
@@ -19,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
       view: {
         type: DataTypes.INTEGER,
         allowNull: false,
-        defaultValues: 0
+        defaultValue: 0
       }
     },
     {

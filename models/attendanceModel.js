@@ -4,10 +4,6 @@ module.exports = (sequelize, DataTypes) => {
   return sequelize.define(
     "attendance",
     {
-      id: {
-        type: DataTypes.INTEGER,
-        primaryKey: true
-      },
       late: {
         type: DataTypes.BOOLEAN,
         allowNull: false,

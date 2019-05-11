@@ -4,6 +4,8 @@ import { GraphQLSchema } from "graphql";
 
 import { queryType, mutationType } from "./grqphql/types";
 
+// import { sequelize } from "./models";
+
 // sequelize.sync().then(() => console.log("sequelize sync"));
 
 const schema = new GraphQLSchema({ query: queryType, mutation: mutationType });
