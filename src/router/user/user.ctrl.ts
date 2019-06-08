@@ -1,12 +1,16 @@
-const { User } = require("../../models");
-const bcrypt = require("bcryptjs");
+"use strict";
 
-exports.getUsers = async (req, res, next) => {
+import { Request, Response, NextFunction } from "express";
+import bcrypt from "bcryptjs";
+
+import { User } from "../../models/user.model";
+
+exports.getUsers = async (req: Request, res: Response, next: NextFunction) => {
   const users = await User.findAll({});
   res.status(200).send(users);
 };
 
-exports.getUser = async (req, res, next) => {
+exports.getUser = async (req: Request, res: Response, next: NextFunction) => {
   const { id } = req.params;
   const user = await User.findOne({ where: { id } });
 
@@ -18,8 +22,8 @@ exports.getUser = async (req, res, next) => {
   return res.status(200).send(user);
 };
 
-exports.login = async (req, res, next) => {
-  if (req.session.user) {
+exports.login = async (req: Request, res: Response, next: NextFunction) => {
+  if (req.session!.user) {
     res.status(403).send({ message: "이미 로그인 되었습니다." });
     return;
   }
@@ -47,9 +51,9 @@ exports.login = async (req, res, next) => {
     return;
   }
 
-  req.session.user = isExist;
+  req.session!.user = isExist;
 
-  req.session.save(err => {
+  req.session!.save(err => {
     if (err) {
       console.error(err);
       return res.status(500).send({ message: "Internal Server Error!" });
@@ -59,7 +63,7 @@ exports.login = async (req, res, next) => {
   });
 };
 
-exports.signUp = async (req, res, next) => {
+exports.signUp = async (req: Request, res: Response, next: NextFunction) => {
   const { name, email, password } = req.body;
 
   if (!name || !email || !password) {
@@ -78,8 +82,8 @@ exports.signUp = async (req, res, next) => {
   return res.status(200).send({ message: "회원 등록이 완료 되었습니다." });
 };
 
-exports.logout = async (req, res, next) => {
-  req.session.destroy((id, err) => {
+exports.logout = async (req: Request, res: Response, next: NextFunction) => {
+  req.session!.destroy(err => {
     if (err) {
       console.error(err);
       res.status(500).send({ message: "Internal Server Error!" });

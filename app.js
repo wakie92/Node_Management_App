@@ -12,7 +12,6 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use(
   session({
-    key: "managing-app",
     secret: "managing-app-secret",
     resave: false,
     saveUninitialized: false,
