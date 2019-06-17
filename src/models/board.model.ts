@@ -10,7 +10,7 @@ import {
   BelongsTo
 } from "sequelize-typescript";
 
-import { User } from "./user.model";
+import { User } from "models/user.model";
 
 @Table({
   tableName: "board",

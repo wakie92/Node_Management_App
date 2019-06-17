@@ -12,8 +12,8 @@ import {
 } from "sequelize-typescript";
 import bcrypt from "bcryptjs";
 
-import { Board } from "./board.model";
-import { Attendance } from "./attendance.model";
+import { Board } from "models/board.model";
+import { Attendance } from "models/attendance.model";
 
 @Table({
   tableName: "user",

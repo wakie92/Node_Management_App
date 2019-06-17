@@ -4,14 +4,15 @@ import express, { Application, Request, Response, NextFunction } from "express";
 import createError from "http-errors";
 import session from "express-session";
 
-import Server from "./Server";
-import { sequelize } from "./models";
+import Server from "Server";
+import { sequelize } from "models";
 
-import userRouter from "./router/user";
+import userRouter from "router/user";
+import boardRouter from "router/board";
 
 const app: Application = new Server().app;
 
-// sequelize.sync({ force: true });
+sequelize.sync();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -28,6 +29,7 @@ app.use(
 );
 
 app.use("/users", userRouter);
+app.use("/boards", boardRouter);
 
 app.use((req: Request, res: Response, next: NextFunction) => {
   next(createError(404));

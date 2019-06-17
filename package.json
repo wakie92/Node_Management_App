@@ -2,7 +2,7 @@
   "name": "node_management_app",
   "version": "1.0.0",
   "description": "��#\u0000 \u0000N\u0000o\u0000d\u0000e\u0000_\u0000M\u0000a\u0000n\u0000a\u0000g\u0000e\u0000m\u0000e\u0000n\u0000t\u0000_\u0000A\u0000p\u0000p\u0000\r\u0000 \u0000",
-  "main": "app.js",
+  "main": "src/App.ts",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "dotenv": "^8.0.0",
@@ -19,6 +19,7 @@
     "@types/express": "^4.17.0",
     "@types/express-session": "^1.15.12",
     "@types/http-errors": "^1.6.1",
+    "@types/mysql2": "github:types/mysql2",
     "@types/node": "^12.0.5",
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.7.0",
@@ -27,13 +28,15 @@
     "source-map-support": "^0.5.12",
     "ts-loader": "^6.0.2",
     "ts-node": "^8.2.0",
+    "tsconfig-paths": "^3.8.0",
+    "tsconfig-paths-webpack-plugin": "^3.2.0",
     "typescript": "^3.5.1",
     "webpack": "^4.33.0",
     "webpack-cli": "^3.3.2"
   },
   "scripts": {
-    "start": "nodemon --watch src --delay 1 --exec 'ts-node' src/App.ts",
-    "build": "webpack --config config/webpack.config.js"
+    "start": "nodemon --watch src --delay 1 --exec 'ts-node' -r tsconfig-paths/register src/App.ts",
+    "build": "webpack --mode production --config config/webpack.config.js"
   },
   "repository": {
     "type": "git",

@@ -4,7 +4,13 @@ import { Router } from "express";
 
 const router = Router();
 
-const { getUsers, getUser, login, signUp, logout } = require("./user.ctrl");
+import {
+  getUsers,
+  getUser,
+  login,
+  signUp,
+  logout
+} from "router/user/user.ctrl";
 
 router.route("/").get(getUsers);
 
