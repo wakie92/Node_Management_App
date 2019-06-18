@@ -11,7 +11,7 @@ export const sequelize = new Sequelize(
   String(DB_USER),
   DB_PWD,
   {
-    modelPaths: [__dirname + "/*.model.ts"],
+    modelPaths: [__dirname + "/*.model.*s"],
     modelMatch: (filename, member) => {
       return (
         filename.substring(0, filename.indexOf(".model")) ===

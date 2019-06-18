@@ -4,13 +4,15 @@ import { Router } from "express";
 
 const router = Router();
 
-import {
-  getUsers,
-  getUser,
-  login,
-  signUp,
-  logout
-} from "router/user/user.ctrl";
+// import {
+//   getUsers,
+//   getUser,
+//   login,
+//   signUp,
+//   logout
+// } from "router/user/user.ctrl";
+
+import { getUsers, getUser, login, signUp, logout } from "./user.ctrl";
 
 router.route("/").get(getUsers);
 

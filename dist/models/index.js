@@ -1,0 +1,22 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const sequelize_typescript_1 = require("sequelize-typescript");
+require("dotenv").config();
+const { DB_HOST, DB_PORT, DB_USER, DB_PWD, DB_NAME } = process.env;
+exports.sequelize = new sequelize_typescript_1.Sequelize(String(DB_NAME), String(DB_USER), DB_PWD, {
+    modelPaths: [__dirname + "/*.model.*s"],
+    modelMatch: (filename, member) => {
+        return (filename.substring(0, filename.indexOf(".model")) ===
+            member.toLowerCase());
+    },
+    host: String(DB_HOST),
+    port: Number(DB_PORT),
+    dialect: "mysql",
+    logging: true,
+    define: {
+        charset: "utf8",
+        collate: "utf8_general_ci",
+        timestamps: true
+    }
+});
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiaW5kZXguanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi8uLi9zcmMvbW9kZWxzL2luZGV4LnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBLFlBQVksQ0FBQzs7QUFFYiwrREFBaUQ7QUFFakQsT0FBTyxDQUFDLFFBQVEsQ0FBQyxDQUFDLE1BQU0sRUFBRSxDQUFDO0FBRTNCLE1BQU0sRUFBRSxPQUFPLEVBQUUsT0FBTyxFQUFFLE9BQU8sRUFBRSxNQUFNLEVBQUUsT0FBTyxFQUFFLEdBQUcsT0FBTyxDQUFDLEdBQUcsQ0FBQztBQUV0RCxRQUFBLFNBQVMsR0FBRyxJQUFJLGdDQUFTLENBQ3BDLE1BQU0sQ0FBQyxPQUFPLENBQUMsRUFDZixNQUFNLENBQUMsT0FBTyxDQUFDLEVBQ2YsTUFBTSxFQUNOO0lBQ0UsVUFBVSxFQUFFLENBQUMsU0FBUyxHQUFHLGFBQWEsQ0FBQztJQUN2QyxVQUFVLEVBQUUsQ0FBQyxRQUFRLEVBQUUsTUFBTSxFQUFFLEVBQUU7UUFDL0IsT0FBTyxDQUNMLFFBQVEsQ0FBQyxTQUFTLENBQUMsQ0FBQyxFQUFFLFFBQVEsQ0FBQyxPQUFPLENBQUMsUUFBUSxDQUFDLENBQUM7WUFDakQsTUFBTSxDQUFDLFdBQVcsRUFBRSxDQUNyQixDQUFDO0lBQ0osQ0FBQztJQUNELElBQUksRUFBRSxNQUFNLENBQUMsT0FBTyxDQUFDO0lBQ3JCLElBQUksRUFBRSxNQUFNLENBQUMsT0FBTyxDQUFDO0lBQ3JCLE9BQU8sRUFBRSxPQUFPO0lBQ2hCLE9BQU8sRUFBRSxJQUFJO0lBQ2IsTUFBTSxFQUFFO1FBQ04sT0FBTyxFQUFFLE1BQU07UUFDZixPQUFPLEVBQUUsaUJBQWlCO1FBQzFCLFVBQVUsRUFBRSxJQUFJO0tBQ2pCO0NBQ0YsQ0FDRixDQUFDIn0=
