@@ -4,17 +4,11 @@ import express, { Application, Request, Response, NextFunction } from "express";
 import createError from "http-errors";
 import session from "express-session";
 
-// import Server from "Server";
-// import { sequelize } from "models";
+import Server from "Server";
+import { sequelize } from "models";
 
-// import userRouter from "router/user";
-// import boardRouter from "router/board";
-
-import Server from "./Server";
-import { sequelize } from "./models";
-
-import userRouter from "./router/user";
-import boardRouter from "./router/board";
+import userRouter from "router/user";
+import boardRouter from "router/board";
 
 const app: Application = new Server().app;
 

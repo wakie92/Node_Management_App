@@ -4,7 +4,6 @@ import { Router } from "express";
 
 const router = Router();
 
-// import { getBoards, getBoard } from "router/board/board.ctrl";
 import { getBoards, getBoard } from "./board.ctrl";
 
 router.route("/").get(getBoards);

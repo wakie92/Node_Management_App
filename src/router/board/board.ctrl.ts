@@ -2,8 +2,7 @@
 
 import { Request, Response } from "express";
 
-// import { Board } from "models/board.model";
-import { Board } from "../../models/board.model";
+import { Board } from "models/board.model";
 
 export const getBoards = async (req: Request, res: Response) => {
   if (!req.session!.user) {
