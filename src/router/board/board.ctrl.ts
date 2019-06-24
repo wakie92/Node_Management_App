@@ -22,8 +22,16 @@ export const createBoard = async (
 	req: Request,
 	res: Response,
 ): Promise<Response> => {
-	if (!req.session!.user) {
+	const { user } = req.session!;
+
+	if (!user) {
 		return res.status(401).send({ message: "로그인 이후에 이용해주세요." });
+	}
+
+	const { user_type } = user;
+
+	if (user_type !== "M") {
+		return res.sendStatus(403);
 	}
 
 	await Board.create(req.body);
@@ -36,7 +44,7 @@ export const getBoard = async (
 	req: Request,
 	res: Response,
 ): Promise<Response> => {
-	const { id } = req.params;
+	const id: number = req.params.id;
 
 	if (!req.session!.user) {
 		return res.status(401).send({ message: "로그인 이후에 이용해주세요." });
@@ -58,10 +66,18 @@ export const updateBoard = async (
 	req: Request,
 	res: Response,
 ): Promise<Response> => {
-	const { id } = req.params;
+	const id: number = req.params.id;
 
-	if (!req.session!.user) {
+	const { user } = req.session!;
+
+	if (!user) {
 		return res.status(401).send({ message: "로그인 이후에 이용해주세요." });
+	}
+
+	const { user_type } = user;
+
+	if (user_type !== "M") {
+		return res.sendStatus(403);
 	}
 
 	await Board.update(req.body, { where: { id } });
@@ -73,10 +89,18 @@ export const destoryBoard = async (
 	req: Request,
 	res: Response,
 ): Promise<Response> => {
-	const { id } = req.params;
+	const id: number = req.params.id;
 
-	if (!req.session!.user) {
+	const { user } = req.session!;
+
+	if (!user) {
 		return res.status(401).send({ message: "로그인 이후에 이용해주세요." });
+	}
+
+	const { user_type } = user;
+
+	if (user_type !== "M") {
+		return res.sendStatus(403);
 	}
 
 	await Board.destroy({ where: { id } });
