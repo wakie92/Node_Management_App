@@ -5,6 +5,9 @@ import bcrypt from "bcryptjs";
 
 import { User } from "models/user.model";
 
+// TODO:  회원정보 수정 ( 관리자 / 본인 - 패스워드만 가능 )
+// TODO: 회원등록 최초, 패스워드 기본 값 ( 공통 값 )
+
 export const getUsers = async (req: Request, res: Response) => {
   const users = await User.findAll({});
   return res.status(200).send(users);

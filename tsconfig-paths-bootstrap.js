@@ -6,5 +6,3 @@ const cleanup = tsConfigPaths.register({
   baseUrl,
   paths: tsConfig.compilerOptions.paths
 });
-
-// cleanup();
