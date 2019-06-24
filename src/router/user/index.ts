@@ -4,16 +4,29 @@ import { Router } from "express";
 
 const router = Router();
 
-import { getUsers, getUser, login, signUp, logout } from "./user.ctrl";
+import {
+	getUsers,
+	getUser,
+	login,
+	enroll,
+	logout,
+	updateUser,
+	createDummyUsers,
+} from "./user.ctrl";
+
+router.route("/dummy").post(createDummyUsers);
 
 router.route("/").get(getUsers);
 
 router.route("/login").post(login);
 
-router.route("/sign-up").post(signUp);
+router.route("/enroll").post(enroll);
 
 router.route("/logout").delete(logout);
 
-router.route("/:id").get(getUser);
+router
+	.route("/:id")
+	.get(getUser)
+	.put(updateUser);
 
 export default router;
