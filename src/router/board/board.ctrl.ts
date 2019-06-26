@@ -9,11 +9,15 @@ export const getBoards = async (
 	req: Request,
 	res: Response,
 ): Promise<Response> => {
-	if (!req.session!.user) {
-		return res.status(401).send({ message: "로그인 이후에 이용해주세요." });
-	}
+	// if (!req.session!.user) {
+	// 	return res.status(401).send({ message: "로그인 이후에 이용해주세요." });
+	// }
 
-	const boards: Board[] = await Board.findAll({});
+	const boards: {
+		rows: Board[];
+		count: number;
+	} = await Board.findAndCountAll();
+
 	return res.status(200).send(boards);
 };
 

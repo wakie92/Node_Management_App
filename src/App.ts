@@ -10,6 +10,7 @@ import { sequelize } from "models";
 
 import userRouter from "router/user";
 import boardRouter from "router/board";
+import attendanceRouter from "router/attendance";
 
 const app: Application = new Server().app;
 
@@ -32,6 +33,7 @@ app.use(
 
 app.use("/users", userRouter);
 app.use("/boards", boardRouter);
+app.use("/attendances", attendanceRouter);
 
 app.use((req: Request, res: Response, next: NextFunction) => {
 	next(createError(404));
