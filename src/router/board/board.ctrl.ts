@@ -26,17 +26,17 @@ export const createBoard = async (
 	req: Request,
 	res: Response,
 ): Promise<Response> => {
-	const { user } = req.session!;
+	// const { user } = req.session!;
 
-	if (!user) {
-		return res.status(401).send({ message: "로그인 이후에 이용해주세요." });
-	}
+	// if (!user) {
+	// 	return res.status(401).send({ message: "로그인 이후에 이용해주세요." });
+	// }
 
-	const { user_type } = user;
+	// const { user_type } = user;
 
-	if (user_type !== "M") {
-		return res.sendStatus(403);
-	}
+	// if (user_type !== "M") {
+	// 	return res.sendStatus(403);
+	// }
 
 	await Board.create(req.body);
 
@@ -50,9 +50,9 @@ export const getBoard = async (
 ): Promise<Response> => {
 	const id: number = req.params.id;
 
-	if (!req.session!.user) {
-		return res.status(401).send({ message: "로그인 이후에 이용해주세요." });
-	}
+	// if (!req.session!.user) {
+	// 	return res.status(401).send({ message: "로그인 이후에 이용해주세요." });
+	// }
 
 	const board: Board | null = await Board.findOne({ where: { id } });
 
@@ -72,17 +72,17 @@ export const updateBoard = async (
 ): Promise<Response> => {
 	const id: number = req.params.id;
 
-	const { user } = req.session!;
+	// const { user } = req.session!;
 
-	if (!user) {
-		return res.status(401).send({ message: "로그인 이후에 이용해주세요." });
-	}
+	// if (!user) {
+	// 	return res.status(401).send({ message: "로그인 이후에 이용해주세요." });
+	// }
 
-	const { user_type } = user;
+	// const { user_type } = user;
 
-	if (user_type !== "M") {
-		return res.sendStatus(403);
-	}
+	// if (user_type !== "M") {
+	// 	return res.sendStatus(403);
+	// }
 
 	await Board.update(req.body, { where: { id } });
 
@@ -95,17 +95,17 @@ export const destoryBoard = async (
 ): Promise<Response> => {
 	const id: number = req.params.id;
 
-	const { user } = req.session!;
+	// const { user } = req.session!;
 
-	if (!user) {
-		return res.status(401).send({ message: "로그인 이후에 이용해주세요." });
-	}
+	// if (!user) {
+	// 	return res.status(401).send({ message: "로그인 이후에 이용해주세요." });
+	// }
 
-	const { user_type } = user;
+	// const { user_type } = user;
 
-	if (user_type !== "M") {
-		return res.sendStatus(403);
-	}
+	// if (user_type !== "M") {
+	// 	return res.sendStatus(403);
+	// }
 
 	await Board.destroy({ where: { id } });
 

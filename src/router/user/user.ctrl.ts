@@ -22,23 +22,23 @@ export const updateUser = async (
 ): Promise<Response> => {
 	const id: number = Number(req.params.id);
 
-	const { user } = req.session!;
+	// const { user } = req.session!;
 
-	if (!user) {
-		return res.status(401).send({ message: "로그인 이후에 이용해주세요." });
-	}
+	// if (!user) {
+	// 	return res.status(401).send({ message: "로그인 이후에 이용해주세요." });
+	// }
 
-	const { user_type } = user;
+	// const { user_type } = user;
 
-	if (user_type !== "M") {
-		const currentUserId = Number(user.id);
+	// if (user_type !== "M") {
+	// 	const currentUserId = Number(user.id);
 
-		if (id !== currentUserId) return res.sendStatus(403);
+	// 	if (id !== currentUserId) return res.sendStatus(403);
 
-		for (const property in req.body) {
-			if (property !== "password") return res.sendStatus(403);
-		}
-	}
+	// 	for (const property in req.body) {
+	// 		if (property !== "password") return res.sendStatus(403);
+	// 	}
+	// }
 
 	await User.update(req.body, { where: { id } });
 	return res.status(200).send({ message: "정보가 수정되었습니다." });
@@ -50,19 +50,19 @@ export const getUser = async (
 ): Promise<Response> => {
 	const id: number = req.params.id;
 
-	const { user } = req.session!;
+	// const { user } = req.session!;
 
-	if (!user) {
-		return res.status(401).send({ message: "로그인 이후에 이용해주세요." });
-	}
+	// if (!user) {
+	// 	return res.status(401).send({ message: "로그인 이후에 이용해주세요." });
+	// }
 
-	const { user_type } = user;
+	// const { user_type } = user;
 
-	if (user_type !== "M") {
-		const currentUserId = Number(user.id);
+	// if (user_type !== "M") {
+	// 	const currentUserId = Number(user.id);
 
-		if (id !== currentUserId) return res.sendStatus(403);
-	}
+	// 	if (id !== currentUserId) return res.sendStatus(403);
+	// }
 
 	const userInfo: User | null = await User.findOne({ where: { id } });
 
@@ -77,9 +77,9 @@ export const login = async (
 	req: Request,
 	res: Response,
 ): Promise<Response | undefined> => {
-	if (req.session!.user) {
-		return res.status(403).send({ message: "이미 로그인 되었습니다." });
-	}
+	// if (req.session!.user) {
+	// 	return res.status(403).send({ message: "이미 로그인 되었습니다." });
+	// }
 
 	const { email, password }: { email: string; password: string } = req.body;
 
@@ -136,17 +136,17 @@ export const enroll = async (
 		grade: string;
 	} = req.body;
 
-	const { user } = req.session!;
+	// const { user } = req.session!;
 
-	if (!user) {
-		return res.status(401).send({ message: "로그인 이후에 이용해주세요." });
-	}
+	// if (!user) {
+	// 	return res.status(401).send({ message: "로그인 이후에 이용해주세요." });
+	// }
 
-	const { user_type } = user;
+	// const { user_type } = user;
 
-	if (user_type !== "M") {
-		return res.sendStatus(403);
-	}
+	// if (user_type !== "M") {
+	// 	return res.sendStatus(403);
+	// }
 
 	if (!name || !email || !salary || !birth || !join_date || !grade) {
 		return res.status(400).send({ message: "필수값을 입력해주세요." });
