@@ -109,7 +109,7 @@ export const login = async (
 	req.session!.save(err => {
 		if (err) {
 			console.error(err);
-			return res.status(500).send({ message: "Internal Server Error!" });
+			return res.status(500).send({ message: "Internal Server Errornternal Server Error!" });
 		}
 
 		return res.status(200).send({ message: "로그인 되었습니다." });
@@ -131,7 +131,7 @@ export const enroll = async (
 		name: string;
 		email: string;
 		salary: number;
-		birth: string;
+		birth: Date;
 		join_date: Date;
 		grade: string;
 	} = req.body;
