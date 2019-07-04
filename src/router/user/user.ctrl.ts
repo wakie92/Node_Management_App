@@ -147,7 +147,7 @@ export const enroll = async (
 	// if (user_type !== "M") {
 	// 	return res.sendStatus(403);
 	// }
-	consolr.log(req.body);
+	console.log(req.body);
 	if (!name || !email || !salary || !birth || !join_date || !grade) {
 		return res.status(400).send({ message: "필수값을 입력해주세요." });
 	}
