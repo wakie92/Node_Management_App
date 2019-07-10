@@ -110,10 +110,16 @@ export const login = async (
 	req.session!.save(err => {
 		if (err) {
 			console.error(err);
-			return res.status(500).send({ message: "Internal Server Errornternal Server Error!" });
+			return res
+				.status(500)
+				.send({ message: "Internal Server Errornternal Server Error!" });
 		}
 
-		return res.status(200).send({ message: "로그인 되었습니다." });
+		return res.status(200).send({
+			message: "로그인 되었습니다.",
+			id: isExist.id,
+			user_type: isExist.user_type,
+		});
 	});
 };
 
@@ -148,7 +154,7 @@ export const enroll = async (
 	// if (user_type !== "M") {
 	// 	return res.sendStatus(403);
 	// }
-	console.log(req.body);
+
 	if (!name || !email || !salary || !birth || !join_date || !grade) {
 		return res.status(400).send({ message: "필수값을 입력해주세요." });
 	}
