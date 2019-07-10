@@ -13,6 +13,7 @@ export const getUsers = async (
 	res: Response,
 ): Promise<Response> => {
 	const users: User[] = await User.findAll({});
+	console.log(users);
 	return res.status(200).send(users);
 };
 
